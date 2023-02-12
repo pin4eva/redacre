@@ -1,4 +1,15 @@
 // Text helpers
+.fs-body {
+  font-size: 1rem;
+}
+
+.fs-sm {
+  font-size: 0.875rem;
+}
+
+.fs-tiny {
+  font-size: 12px;
+}
 
 // layouts
 
@@ -7,5 +18,52 @@
   margin: 0 auto;
   @media screen and (max-width: 1095px) {
     margin-inline: 1.5rem;
+  }
+}
+
+// Buttons
+
+.btn {
+  font-size: 1rem;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding-y $btn-padding-x;
+  border-width: 1px;
+  transition: 0.5s all ease-in-out;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.primary {
+    background-color: $primary;
+    color: white;
+    border: 1px solid $primary;
+    &:not([disabled]):hover {
+      background-color: $secondary;
+      border-color: $secondary;
+    }
+
+    &:disabled {
+      background-color: $neutral;
+      border: 1px solid $neutral;
+    }
+  }
+
+  &.secondary {
+    background-color: transparent;
+    color: $secondary;
+    border: 1px solid;
+
+    &:not([disabled]):hover {
+      background-color: $gray;
+      border-color: $gray;
+      color: white;
+    }
+
+    &:disabled {
+      border: 1px solid $neutral;
+      color: #aab8c2;
+    }
   }
 }
