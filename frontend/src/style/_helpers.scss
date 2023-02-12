@@ -1,1 +1,11 @@
 // Text helpers
+
+// layouts
+
+.container {
+  max-width: 1095px;
+  margin: 0 auto;
+  @media screen and (max-width: 1095px) {
+    margin-inline: 1.5rem;
+  }
+}
