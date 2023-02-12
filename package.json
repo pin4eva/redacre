@@ -1,0 +1,17 @@
+{
+  "name": "redacre",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pin4eva/redacre.git",
+  "author": "Peter Akaliro <38269224+pin4eva@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^8.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "git-commit-msg-linter": "^4.6.0"
+  }
+}
