@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select } from "./lib/Select";
+import { Select, SelectOption } from "./lib/Select";
 
 const App = () => {
   const [selectedItem, setSelectedItem] = useState("");
@@ -15,18 +15,11 @@ const App = () => {
 
       <div>
         <label>Hello</label>
-        <Select
-          selectedItem={selectedItem}
-          options={data.map((d, i) => (
-            <div
-              key={i}
-              className="select-option-item"
-              onClick={() => setSelectedItem(d.name)}
-            >
-              {d.name}
-            </div>
+        <Select selectedItem={selectedItem}>
+          {data.map((d, i) => (
+            <SelectOption key={i}>{d.name}</SelectOption>
           ))}
-        />
+        </Select>
       </div>
     </div>
   );

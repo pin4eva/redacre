@@ -1,12 +1,12 @@
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 interface IProp {
-  options: ReactNode[];
+  children: React.ReactElement[];
   selectedItem: string;
 }
 
-export const Select: React.FC<IProp> = ({ options, selectedItem }: IProp) => {
+export const Select: React.FC<IProp> = ({ children, selectedItem }: IProp) => {
   useEffect(() => {
     if (typeof window !== undefined) {
       const wrapper = document.querySelector(".select-option-body");
@@ -52,7 +52,7 @@ export const Select: React.FC<IProp> = ({ options, selectedItem }: IProp) => {
             <button className="select-option-trigger trigger-button">
               {selectedItem ? selectedItem : "Select item..."}
             </button>
-            <div className="select-option-wrapper">{options}</div>
+            <div className="select-option-wrapper">{children}</div>
           </div>
         </div>
       </div>
@@ -60,4 +60,11 @@ export const Select: React.FC<IProp> = ({ options, selectedItem }: IProp) => {
   );
 };
 
+export const SelectOption = ({
+  children,
+}: {
+  children: React.ReactElement | string;
+}) => {
+  return <div className="select-option-item">{children}</div>;
+};
 const Wrapper = styled.div``;
