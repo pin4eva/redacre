@@ -1,11 +1,25 @@
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import styled from "styled-components";
 
-export const Select = () => {
+interface IProp {
+  options: ReactNode[];
+  selectedItem: string;
+}
+
+export const Select: React.FC<IProp> = ({ options, selectedItem }: IProp) => {
   useEffect(() => {
     if (typeof window !== undefined) {
       const wrapper = document.querySelector(".select-option-body");
       const trigger = document.querySelector(".trigger-button");
+      const optionsWrapper = document.querySelector(".select-option-wrapper");
+
+      const options = Array.from(optionsWrapper?.children as Iterable<Element>);
+
+      options.forEach((opt) => {
+        opt.addEventListener("click", () => {
+          wrapper?.classList.remove("isActive");
+        });
+      });
 
       trigger?.addEventListener("click", () => {
         wrapper?.classList.toggle("isActive");
@@ -32,32 +46,13 @@ export const Select = () => {
   }, []);
   return (
     <Wrapper>
-      <span>main job</span>
-
       <div className="select">
-        <span className="select-label">Main job role</span>
         <div className="select-wrapper">
           <div className="select-option-body">
             <button className="select-option-trigger trigger-button">
-              Select role...
+              {selectedItem ? selectedItem : "Select item..."}
             </button>
-            <div className="select-option-wrapper">
-              <div className="select-option-item" data-value="ds">
-                UI/UX Designer
-              </div>
-              <div className="select-option-item" data-value="fe">
-                Frontend Engineer
-              </div>
-              <div className="select-option-item" data-value="be">
-                Backend Engineer
-              </div>
-              <div className="select-option-item" data-value="qa">
-                QA Engineer
-              </div>
-              <div className="select-option-item" data-value="un">
-                Unicorn
-              </div>
-            </div>
+            <div className="select-option-wrapper">{options}</div>
           </div>
         </div>
       </div>

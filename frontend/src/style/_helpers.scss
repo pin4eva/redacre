@@ -129,11 +129,12 @@ select {
     position: relative;
     width: 100%;
     text-align: left;
+    min-width: 7rem;
     &::after {
       content: "▾";
       position: absolute;
       margin-left: auto;
-      right: 2%;
+      right: $btn-padding-x;
     }
   }
 }
